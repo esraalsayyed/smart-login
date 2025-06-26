@@ -122,22 +122,31 @@ a {
 /* ========= media query break points ============  */
 
 @media (min-width: 320px) {
-  .login {
+  .login , section .empty-input .box,
+  .incorrect-input .box,
+  .existing-input .box {
     width: 80%;
   }
+
 }
 @media (min-width: 600px) {
-  .login {
+  .login,section .empty-input .box,
+  .incorrect-input .box,
+  .existing-input .box {
     width: 60%;
   }
 }
 @media (min-width: 801px) {
-  .login {
+  .login,section .empty-input .box,
+  .incorrect-input .box,
+  .existing-input .box {
     width: 50%;
   }
 }
 @media (min-width: 1025px) {
-  .login {
+  .login,section .empty-input .box,
+  .incorrect-input .box,
+  .existing-input .box{
     width: 40%;
   }
 }
