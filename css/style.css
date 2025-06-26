@@ -1,0 +1,143 @@
+/* ================= variables =============== */
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --big-font-size: 2rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.813rem;
+}
+
+/* =============== Design ====================  */
+
+section {
+  background-image: url(../image/login-bg.png);
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 40%;
+}
+.login h1 {
+  font-size: var(--big-font-size);
+}
+.login .inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login .inputs input {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+.login .inputs input::placeholder {
+  color: white;
+  font-size: var(--normal-font-size);
+}
+.login .inputs input:focus {
+  border-color: #422f9c;
+  box-shadow: 0 0 5px 2px #422f9c;
+}
+.login .my-icon {
+  top: 20%;
+  right: 5%;
+}
+.login button , .login #login {
+  background-color: white;
+  width: 75%;
+  padding: 10px 0;
+  font-weight: 500;
+  font-size: var(--normal-font-size);
+  text-decoration: none;
+  color:black;
+}
+.login button:hover {
+  background-color: white;
+}
+.login h5,
+a {
+  font-size: var(--small-font-size) !important;
+  padding-bottom: 30px;
+}
+.login .sign-out button:hover {
+  color: black;
+} 
+.login .success{
+  color:rgb(9, 235, 9)
+}
+
+/* ================= pop-up windows ================= */
+
+section .empty-input,
+.incorrect-input,
+.existing-input {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section .empty-input .box,
+.incorrect-input .box,
+.existing-input .box {
+  width: 35%;
+  height: 25%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+section .empty-input .box button,
+.incorrect-input .box button,
+.existing-input .box button,
+.existing-input .box button a {
+  margin: 0 25px;
+  font-size: var(--small-font-size);
+  background-color: #3f2c9b !important;
+  border-color: #3f2c9b !important;
+}
+.empty-input .box h3,
+.incorrect-input .box h3,
+.existing-input .box h3,
+a {
+  font-size: var(--normal-font-size);
+  text-align: center;
+}
+
+/* ========= media query break points ============  */
+
+@media (min-width: 320px) {
+  .login {
+    width: 80%;
+  }
+}
+@media (min-width: 600px) {
+  .login {
+    width: 60%;
+  }
+}
+@media (min-width: 801px) {
+  .login {
+    width: 50%;
+  }
+}
+@media (min-width: 1025px) {
+  .login {
+    width: 40%;
+  }
+}
