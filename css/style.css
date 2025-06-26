@@ -122,31 +122,43 @@ a {
 /* ========= media query break points ============  */
 
 @media (min-width: 320px) {
-  .login , section .empty-input .box,
-  .incorrect-input .box,
-  .existing-input .box {
+  .login  {
     width: 80%;
+  }
+  section .empty-input .box,
+  .incorrect-input .box,
+  .existing-input .box{
+    width:75%;
   }
 
 }
 @media (min-width: 600px) {
-  .login,section .empty-input .box,
-  .incorrect-input .box,
-  .existing-input .box {
+  .login{
     width: 60%;
+  }
+  section .empty-input .box,
+  .incorrect-input .box,
+  .existing-input .box{
+    width:55%;
   }
 }
 @media (min-width: 801px) {
-  .login,section .empty-input .box,
-  .incorrect-input .box,
-  .existing-input .box {
+  .login {
     width: 50%;
+  }
+  section .empty-input .box,
+  .incorrect-input .box,
+  .existing-input .box{
+    width:45%;
   }
 }
 @media (min-width: 1025px) {
-  .login,section .empty-input .box,
-  .incorrect-input .box,
-  .existing-input .box{
+  .login{
     width: 40%;
   }
+  section .empty-input .box,
+.incorrect-input .box,
+.existing-input .box{
+  width:35%;
+}
 }
