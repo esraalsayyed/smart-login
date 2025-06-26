@@ -17,17 +17,16 @@ let lockOpen = document.getElementById("lock-open"); //closed lock icon
 let lockClosed = document.getElementById("lock-closed"); //open lock icon
 let welcomeMsg = document.getElementById("welcome-msg"); //welcome msg to the user
 let signOut = document.querySelector(".sign-out");
+let outerContainer = document.querySelectorAll(".outer-container"); //all outer containers of pop up error messages
 
 //=========array of all users=========
+//check if there's data in local storage or not
 let userList = [];
-
-
-//============load users from local storage if found=========
-if (localStorage.getItem("users") !== null) {
+if (localStorage.getItem("users") === null) {
+  userList = [];
+} else {
   userList = JSON.parse(localStorage.getItem("users"));
 }
-
-
 //=============\/ start of events /\=====================
 
 //======sign up button ================
@@ -64,34 +63,42 @@ if (signUp) {
 //=========== login button =========================
 if (login) {
   login.addEventListener("click", function () {
-    let email = userEmailInput.value;
-    let password = userPasswordInput.value;
-    for (let i = 0; i < userList.length; i++) {
-      //if email anf password are correct and saved in storage
-      if (
-        userList[i].userEmail === email &&
-        userList[i].userPassword === password
-      ) {
-        //change lock icon from closed to open
-        lockOpen.classList.remove("d-none");
-        lockClosed.classList.add("d-none");
-        //save current user info
-        localStorage.setItem("currentUser", JSON.stringify(userList[i]));
-        //redirect to welcome page
-        window.location.href = "welcome.html";
-        return;
-      }
-      //if any of the inputs are empty show the empty inputs error message
-      else if (email.trim() === "" || password.trim() === "") {
-        empty.classList.remove("d-none");
-      }
-      //if any of the inputs are incorrect and doesn't match with user's saved data
-      //show invalid inputs error message
-      else if (
-        userList[i].userEmail === email ||
-        userList[i].userPassword === password
-      ) {
-        invalid.classList.remove("d-none");
+    if (userList.length===0 &&(userEmailInput.value===""||userPasswordInput.value==="")) {
+      empty.classList.remove("d-none");
+    }
+    else if (userList.length===0 && !(userEmailInput.value === "" && userPasswordInput.value === "")) {
+      invalid.classList.remove("d-none");
+    }
+    else {
+      let email = userEmailInput.value;
+      let password = userPasswordInput.value;
+      for (let i = 0; i < userList.length; i++) {
+        //if email anf password are correct and saved in storage
+        if (
+          userList[i].userEmail === email &&
+          userList[i].userPassword === password
+        ) {
+          //change lock icon from closed to open
+          lockOpen.classList.remove("d-none");
+          lockClosed.classList.add("d-none");
+          //save current user info
+          localStorage.setItem("currentUser", JSON.stringify(userList[i]));
+          //redirect to welcome page
+          window.location.href = "welcome.html";
+          return;
+        }
+        //if any of the inputs are empty show the empty inputs error message
+        else if (email.trim() === "" || password.trim() === "") {
+          empty.classList.remove("d-none");
+        }
+        //if any of the inputs are incorrect and doesn't match with user's saved data
+        //show invalid inputs error message
+        else if (
+          userList[i].userEmail === email ||
+          userList[i].userPassword === password
+        ) {
+          invalid.classList.remove("d-none");
+        }
       }
     }
   });
@@ -127,6 +134,14 @@ if (welcomeMsg) {
   });
 }
 
+//close all pop up error messege from the outer container
+
+document.addEventListener("click", function (e) {
+  if (e.target === exist || e.target === empty || e.target===invalid) {
+    close();
+  }
+})
+
 
 //=========== start of functions ====================
 
@@ -143,6 +158,7 @@ function clearInputs() {
 function close() {
   empty.classList.add("d-none");
   invalid.classList.add("d-none");
+  exist.classList.add("d-none");
 }
 
 
@@ -152,12 +168,11 @@ function checkEmail() {
     if (
       userList[i].userEmail.toLowerCase() === userEmailInput.value.toLowerCase()
     ) {
-      return false;
+      return false; 
     }
-    return true;
   }
+  return true; 
 }
-
 
 //===========function to check if any of the inputs are empty
 function emptyInput() {
